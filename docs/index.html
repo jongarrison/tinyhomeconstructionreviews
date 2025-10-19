@@ -18,12 +18,76 @@
         <main class="main-content">
             <div class="hero-section">
                 <div class="hero-content">
-                    <h2 class="hero-title">Coming Soon</h2>
+                    <h2 class="hero-title">Coming Soon, Or is it?</h2>
                     <div class="announcement-card">
                         <div class="announcement-icon">
                             <img src="tarp.png" alt="Tarp Icon" class="icon-image" />
                         </div>
                         <h3 class="announcement-title">Stay Tuned</h3>
+                        
+                        <div class="timeline-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Milestone</th>
+                                        <th>Days</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="today-row">
+                                        <td>Today:</td>
+                                        <td>—</td>
+                                        <td id="today-date"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Days remaining that we will accept shipment</td>
+                                        <td data-target-date="2025-11-11"></td>
+                                        <td>11/11/25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Approx. days steel has been sitting on the supplier dock ready for pick up</td>
+                                        <td data-target-date="2025-08-03"></td>
+                                        <td>8/3/25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Days since "expedited kit" should have been delivered</td>
+                                        <td data-target-date="2025-07-15"></td>
+                                        <td>7/15/25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Days since first indication of significant supply chain failure</td>
+                                        <td data-target-date="2025-05-20"></td>
+                                        <td>5/20/25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Days since latest acceptable contractual delivery date (1/11 email)</td>
+                                        <td data-target-date="2025-09-11"></td>
+                                        <td>9/11/25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Days since revised late delivery date</td>
+                                        <td data-target-date="2025-10-03"></td>
+                                        <td>10/3/25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Days since building permit issue</td>
+                                        <td data-target-date="2025-06-18"></td>
+                                        <td>6/18/25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Days since assistance with production was offered</td>
+                                        <td data-target-date="2025-05-25"></td>
+                                        <td>5/25/25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Days since first deposit was put down to "secure place in production"</td>
+                                        <td data-target-date="2025-01-11"></td>
+                                        <td>1/11/25</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     
                 </div>
@@ -31,5 +95,49 @@
         </main>
         
     </div>
+    
+    <script>
+        // Function to format date as M/D/YY
+        function formatDate(date) {
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            const year = String(date.getFullYear()).slice(-2);
+            return `${month}/${day}/${year}`;
+        }
+        
+        // Function to calculate days between two dates
+        function calculateDaysDifference(targetDate, today) {
+            const diffTime = today - targetDate;
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays;
+        }
+        
+        // Update the page on load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get today's date
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); // Reset time to midnight for accurate day calculation
+            
+            // Update today's date display
+            const todayElement = document.getElementById('today-date');
+            if (todayElement) {
+                todayElement.textContent = formatDate(today);
+            }
+            
+            // Update all day count cells
+            const dayCells = document.querySelectorAll('td[data-target-date]');
+            dayCells.forEach(cell => {
+                const targetDateStr = cell.getAttribute('data-target-date');
+                const targetDate = new Date(targetDateStr);
+                targetDate.setHours(0, 0, 0, 0);
+                
+                const daysDiff = calculateDaysDifference(targetDate, today);
+                
+                // For dates in the future (like acceptance deadline), show negative
+                // For dates in the past (like "days since"), show positive
+                cell.textContent = daysDiff;
+            });
+        });
+    </script>
 </body>
 </html>

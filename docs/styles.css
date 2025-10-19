@@ -134,6 +134,74 @@ body {
     font-weight: 600;
 }
 
+/* Timeline table */
+.timeline-table {
+    margin-top: 2rem;
+    overflow-x: auto;
+}
+
+.timeline-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-table thead {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+}
+
+.timeline-table th {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.timeline-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    color: #4a5568;
+}
+
+.timeline-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.timeline-table tbody tr:hover {
+    background-color: rgba(16, 185, 129, 0.03);
+}
+
+.timeline-table .today-row {
+    background-color: rgba(16, 185, 129, 0.08);
+    font-weight: 600;
+}
+
+.timeline-table .today-row:hover {
+    background-color: rgba(16, 185, 129, 0.12);
+}
+
+.timeline-table td:nth-child(2) {
+    text-align: center;
+    font-weight: 600;
+    color: #2d3748;
+    min-width: 60px;
+}
+
+.timeline-table td:nth-child(3) {
+    text-align: right;
+    font-weight: 500;
+    color: #2d3748;
+    white-space: nowrap;
+    min-width: 90px;
+}
+
 /* Features preview */
 .features-preview {
     display: flex;
@@ -202,6 +270,23 @@ body {
         padding: 1.5rem;
     }
     
+    .timeline-table {
+        margin-top: 1.5rem;
+    }
+    
+    .timeline-table table {
+        font-size: 0.8rem;
+    }
+    
+    .timeline-table th,
+    .timeline-table td {
+        padding: 0.6rem 0.75rem;
+    }
+    
+    .timeline-table td:first-child {
+        font-size: 0.75rem;
+    }
+    
     .features-preview {
         flex-direction: column;
         gap: 0.5rem;
@@ -237,5 +322,22 @@ body {
     
     .announcement-text {
         font-size: 1rem;
+    }
+    
+    .timeline-table table {
+        font-size: 0.75rem;
+    }
+    
+    .timeline-table th {
+        font-size: 0.7rem;
+        padding: 0.5rem;
+    }
+    
+    .timeline-table td {
+        padding: 0.5rem;
+    }
+    
+    .timeline-table td:first-child {
+        font-size: 0.7rem;
     }
 }
