@@ -12,19 +12,22 @@
 <body>
     <div class="container">
         <!-- <header class="header">
-            <h1 class="logo">More info coming 11/12/2025</h1>
+            <h1 class="logo">Coming Soon!</h1>
         </header> -->
 
         <main class="main-content">
             <div class="hero-section">
+
                 <div class="hero-content">
                     <h2 class="hero-title">
+                        Days Until "Expedited Kit" Delivery:                        
                         <span class="timeline-calcs">
                             <span data-target-date="2025-07-15">0</span>
                         </span>
-                        DAYS LATE FOR "EXPEDITED KIT"
+                        (LATE)
                     </h2>
-                    <img src="tarp.png" alt="Tarp Icon" class="icon-image" />
+                    
+                    <img src="tarp.png" alt="Unfinished NOMAD Micro Homes Inc. Foundation" class="icon-image" />
             
                 </div>
             </div>
@@ -69,7 +72,8 @@
                 
                 const daysDiff = calculateDaysDifference(targetDate, today);
                 
-                span.textContent = daysDiff;
+                // Show negative sign when after the target date (positive daysDiff means we're past the date)
+                span.textContent = daysDiff > 0 ? -daysDiff : daysDiff;
             });
         });
     </script>
